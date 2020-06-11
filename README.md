@@ -18,6 +18,14 @@ The [original WSDL](soap-client-mvc/src/main/resources/blz-service-orig.wsdl) wa
 (XmlRootElements were not generated when `xsd:complexType`s were referenced by name).
 The [adapted WSDL](soap-client-mvc/src/main/resources/blz-service.wsdl)
 
+### Build & Run
+
+- Run `mvn package` in each directory
+- Run MVC app: `java -jar target/soap-client-mvc.jar` 
+- Use MVC app: `http://localhost:8080/`
+- Run WebFlux app: `java -jar target/soap-client-reactive.jar` 
+- Use WebFlux app: `http://localhost:8082/`
+
 ### Links
 
 - The used [Bankleitzahlen Web Service](https://www.predic8.de/soap/blz-webservice.htm) and its [BLZService?wsdl WSDL](http://www.thomas-bayer.com/axis2/services/BLZService?wsdl)
