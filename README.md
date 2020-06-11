@@ -14,9 +14,9 @@ in both
 
 The project is set up to use JDK 11.
 
-The [original WSDL](src/main/resources/blz-service-orig.wsdl) was adapted due to problems in the code generation
+The [original WSDL](soap-client-mvc/src/main/resources/blz-service-orig.wsdl) was adapted due to problems in the code generation
 (XmlRootElements were not generated when `xsd:complexType`s were referenced by name).
-The [adapted WSDL](src/main/resources/blz-service.wsdl)
+The [adapted WSDL](soap-client-mvc/src/main/resources/blz-service.wsdl)
 
 ### Links
 
