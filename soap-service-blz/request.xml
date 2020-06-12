@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:gs="http://www.giraone.com/blz-service/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gs:getBank>
+         <gs:blz>10070024</gs:blz>
+      </gs:getBank>
+   </soapenv:Body>
+</soapenv:Envelope>

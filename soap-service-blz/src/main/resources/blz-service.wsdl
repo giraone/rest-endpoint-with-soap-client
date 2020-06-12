@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.giraone.com/blz-service/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.giraone.de/blz-service/" targetNamespace="http://www.giraone.de/blz-service/">
+  <wsdl:types>
+    <xsd:schema xmlns:tns="http://www.giraone.com/blz-service/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.giraone.com/blz-service/">
+
+      <xsd:element name="getBankRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="blz" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBankResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="details" type="tns:detailsType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:complexType name="detailsType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="bezeichnung" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="bic" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ort" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="plz" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getBankRequest">
+    <wsdl:part element="sch:getBankRequest" name="getBankRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBankResponse">
+    <wsdl:part element="sch:getBankResponse" name="getBankResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BankPort">
+    <wsdl:operation name="getBank">
+      <wsdl:input message="tns:getBankRequest" name="getBankRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:getBankResponse" name="getBankResponse">
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BankPortSoap11" type="tns:BankPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getBankRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBankResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BankPortService">
+    <wsdl:port binding="tns:BankPortSoap11" name="BankPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

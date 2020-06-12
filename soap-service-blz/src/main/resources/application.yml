@@ -1,0 +1,8 @@
+logging:
+  level:
+    com.giraone: INFO
+    org:
+      springframework:
+        ws: DEBUG
+server:
+  port: 8080
