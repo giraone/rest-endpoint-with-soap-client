@@ -29,4 +29,14 @@ public class BankDetails {
     public String getPlz() {
         return plz;
     }
+
+    @Override
+    public String toString() {
+        return "BankDetails{" +
+            "bezeichnung='" + bezeichnung + '\'' +
+            ", bic='" + bic + '\'' +
+            ", ort='" + ort + '\'' +
+            ", plz='" + plz + '\'' +
+            '}';
+    }
 }

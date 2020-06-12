@@ -1,0 +1,27 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xsd:element name="getBank">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="blz" type="xsd:string"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="getBankResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="details" type="tns:detailsType"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="detailsType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="bezeichnung" type="xsd:string"></xsd:element>
+            <xsd:element minOccurs="0" name="bic" type="xsd:string"></xsd:element>
+            <xsd:element minOccurs="0" name="ort" type="xsd:string"></xsd:element>
+            <xsd:element minOccurs="0" name="plz" type="xsd:string"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

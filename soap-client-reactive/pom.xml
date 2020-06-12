@@ -90,7 +90,8 @@
 					<schemaLanguage>WSDL</schemaLanguage>
 					<generatePackage>com.giraone.soap.wsdl</generatePackage>
 					<schemaDirectory>src/main/resources</schemaDirectory>
-					<schemaIncludes>blz-service.wsdl</schemaIncludes>
+					<!-- <schemaIncludes>*.wsdl</schemaIncludes> -->
+					<schemaIncludes>*.xsd</schemaIncludes>
 					<!--
 					<debug>true</debug>
 					<verbose>true</verbose>
