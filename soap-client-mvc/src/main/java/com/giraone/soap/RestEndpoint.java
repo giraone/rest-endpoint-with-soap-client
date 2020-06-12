@@ -28,13 +28,14 @@ public class RestEndpoint {
         log.debug("REST request to get bank details for bankleitzahl={}", bankleitzahl);
         try {
             DetailsType details = blzSoapClient.getBank(bankleitzahl);
-            BankDetails ret = new BankDetails(
+            BankDetails bankDetails = new BankDetails(
                 details.getBezeichnung(),
                 details.getBic(),
                 details.getOrt(),
                 details.getPlz()
             );
-            return ResponseEntity.ok(ret);
+            log.debug("Response for bankleitzahl={} is {}", bankleitzahl, bankDetails);
+            return ResponseEntity.ok(bankDetails);
         }
         catch (Exception e) {
             log.error("Retrieval of {} failed!", bankleitzahl, e);

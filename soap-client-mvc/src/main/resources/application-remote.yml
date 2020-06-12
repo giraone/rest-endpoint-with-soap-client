@@ -1,0 +1,3 @@
+application:
+  soapEndpointUrl: 'http://www.thomas-bayer.com/axis2/services/BLZService'
+  defaultUri: 'http://thomas-bayer.com/blz'

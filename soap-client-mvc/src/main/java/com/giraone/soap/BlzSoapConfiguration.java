@@ -1,5 +1,6 @@
 package com.giraone.soap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -7,8 +8,8 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 @Configuration
 public class BlzSoapConfiguration {
 
-    public static final String SOAP_ENDPOINT = "http://www.thomas-bayer.com/axis2/services/BLZService";
-    public static final String DEFAULT_URI = "http://thomas-bayer.com/blz/";
+    @Autowired
+    ApplicationProperties applicationProperties;
 
     @Bean
     public Jaxb2Marshaller marshaller() {
@@ -16,10 +17,10 @@ public class BlzSoapConfiguration {
         // this package must match the package in the <generatePackage> specified in pom.xml
 
         // Solution (1) - use context path and a manipulated WSDL/XSD
-        marshaller.setContextPath("com.giraone.soap.wsdl");
+        marshaller.setContextPath(applicationProperties.getContextPath());
 
         // Solution (2) - manually define the classes and suppress XmlRootElement checks
-        // marshaller.setClassesToBeBound(GetBankType.class, GetBankResponseType.class, DetailsType.class);
+        // marshaller.setClassesToBeBound(GetBank.class, GetBankResponseType.class, DetailsType.class);
         // marshaller.setSupportJaxbElementClass(true);
         // marshaller.setCheckForXmlRootElement(false);
 
@@ -29,7 +30,7 @@ public class BlzSoapConfiguration {
     @Bean
     public BlzSoapClient blzSoapClient(Jaxb2Marshaller marshaller) {
         BlzSoapClient client = new BlzSoapClient();
-        client.setDefaultUri(SOAP_ENDPOINT);
+        client.setDefaultUri(applicationProperties.getSoapEndpointUrl());
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;

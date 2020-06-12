@@ -5,4 +5,8 @@ logging:
       springframework:
         ws: DEBUG
 server:
-  port: 8080
+  port: 8081
+
+application:
+  soapEndpointUrl: 'http://localhost:8080/ws/bank'
+  defaultUri: 'http://www.giraone.com/blz-service/'
